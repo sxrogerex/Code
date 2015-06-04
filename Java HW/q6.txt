@@ -1,0 +1,57 @@
+[公告]
+作業五格式上傳範例如下：
+103356039
+-question6
+--Card.java
+--Dealer.java
+--Player.java
+103356039, question6是資料夾(下略...)
+--
+這次比較複雜，3個Class都有事情要你們忙一下。
+但希望你們可以感受到Class之間的互動。
+1. Card.java：
+Card中以2個fields, suit and face來表示一張撲克牌的資料。
+但suit跟face的值只能從Card中的static array (suits and faces)取得。
+在Card中要求你們完成的method只有一個：
+public boolean compare(Card c2) {//...}
+實做的內容是跟其他的Card比較，
+如果自己較大，便回傳true，其他情況則false，
+須同時考慮花色跟面值。
+我實作的內容是拿自己的face字串長度跟對方的face長度相比，
+一點意義都沒有，請幫我改掉。
+hint: 我用到了this關鍵字，不懂就看看書或來找我吧。
+"""除了改變compare的內容以外，其他都不要改"""
+2. Player.java
+Player中的cards代表收到荷官(Dealer)發的牌。
+也就是沒意外的話，cards的長度應該是13。
+Player中要完成的method只有一個：
+public void sort() {
+//...
+}
+這邊請大家上網或自己寫一個排序演算法，
+可利用card的compare method來排序，最小的在前面。
+"""除了改變sort的內容以外，其他都不要改"""
+3. Dealer.java
+Dealer中有3個method要完成。
+1.) private Card[] initDeck()
+這個method目標是在一個array裏面產生52張卡，然後回傳該array
+52張卡都要不同，用來模擬剛打開一包新的撲克牌。
+2.) public void shuffle() {//..}
+就...隨機洗牌，課本上有例子。
+3.) public Player[] dealing() {//...}
+將洗好的牌分給四個賭客，不用排序。
+"""除了改變1,2,3的內容以外，其他都不要改"""
+--
+上述說不要改的原因是怕你們破壞constructor的外形
+或一些method的外形造成測試程式compile error。
+這樣子會改不出來的，不過新增method幫助計算倒是不在此項限制中。
+--
+當你們完成之後，
+跑這次附的Test.java就可以看到牌組之間的改變了。
+星期四可能會先成績結算一次，
+提早交卷的同學可先知道自己的成績和修正答案的機會。
+有問題可通知我，注意上傳格式，
+不要抄作業，這樣會學不到東西，
+在台上的我們也會不了解你們進度跟到哪了，
+對彼此都很不方便。
+祝作答愉快。

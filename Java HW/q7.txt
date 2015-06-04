@@ -1,0 +1,31 @@
+[公告]
+作業六格式上傳範例如下：
+103356039
+-question7
+--SavingAccount.java
+103356039, question7是資料夾(下略...)
+--
+作業目標：
+在不更動Test.java的內容下，成功的讓Test.java可以compile。
+執行後會印出：
+true
+true
+true
+true
+true
+true
+true
+true
+true
+--
+限制：
+- 不要修改Test.java
+--
+提示：
+在Test.java中有兩個部分錯誤導致程式無法compile：
+SavingAccount.modifyInterestRate(0.05);
+SavingAccount.getAnnualInterestRate();
+修好應該就可以上傳了。
+抱歉最近比較忙，拖到了給作業的時間...
+星期四的晚上會先改一次。
+祝各位作答愉快。
