@@ -4,6 +4,7 @@ package question6;
  * Created by jjchen on 2015/5/19.
  */
 public class Test {
+	
     public static void main(String[] args) {
         Dealer d = new Dealer();
         System.out.println("=====before shuffle=====");

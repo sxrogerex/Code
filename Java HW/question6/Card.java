@@ -2,9 +2,6 @@ package question6;
 
 import java.util.Arrays;
 import java.util.List;
-
-import com.sun.org.apache.bcel.internal.generic.ReturnaddressType;
-
 /**
  * Created by jjchen on 2015/5/19.
  */
@@ -40,21 +37,19 @@ public class Card {
     /*return true if this is greater than c2 */
     public boolean compare(Card c2) {
     	/*方法一(較佳寫法)*/
-    	return facesAsList.indexOf(this.face) < facesAsList.indexOf(c2.face) || facesAsList.indexOf(this.face) == facesAsList.indexOf(c2.face) && suitsAsList.indexOf(this.face) < suitsAsList.indexOf(c2.face)
-       
+    	return (facesAsList.indexOf(this.face) < facesAsList.indexOf(c2.face) 
+    			|| facesAsList.indexOf(this.face) == facesAsList.indexOf(c2.face)
+    			&& suitsAsList.indexOf(this.suit) < suitsAsList.indexOf(c2.suit));
+    	
         /*方法二(我第一個想到的方法)
            if (facesAsList.indexOf(this.face) < facesAsList.indexOf(c2.face)) {
             return true;
-        }else if(facesAsList.indexOf(this.face) = facesAsList.indexOf(c2.face)){
-        	if(suitsAsList.indexOf(this.face) < suitsAsList.indexOf(c2.face)){
+        }else if(facesAsList.indexOf(this.face) == facesAsList.indexOf(c2.face)&&suitsAsList.indexOf(this.suit) < suitsAsList.indexOf(c2.suit)){
         		return true;
-        	}else{
-        		return false;
-        		}
         }else{
         return false;
-        }
-         */
+        }*/
+         
     }
 
     @Override

@@ -4,7 +4,7 @@ package question7;
  * Created by jjchen on 2015/6/1.
  */
 public class SavingAccount {
-    private double annualInterestRate = 0.04;
+    private static double annualInterestRate = 0.04;
     private double savingBalance;
 
     public SavingAccount(double savingBalance) {
@@ -15,11 +15,11 @@ public class SavingAccount {
         savingBalance = savingBalance + savingBalance * annualInterestRate / 12;
     }
 
-    public void modifyInterestRate(double newRate) {
+    public static void modifyInterestRate(double newRate) {
         annualInterestRate = newRate;
     }
 
-    public double getAnnualInterestRate() {
+    public static double getAnnualInterestRate() {
         return annualInterestRate;
     }
 
