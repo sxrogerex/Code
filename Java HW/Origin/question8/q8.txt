@@ -1,0 +1,115 @@
+[公告]
+作業7格式上傳範例如下：
+103356039
+-question8
+--DayOneExtra.java
+--Extra.java
+--Karting.java
+--Paragliding.java
+--Test.java
+--ToBritishVirginIslands.java
+--ToJapan.java
+--TravelBudget.java
+103356039, question8是資料夾(下略...)
+--
+作業目標：
+- 不更改Test.java的情況下通過compile
+- 執行後console印出來的值都是true
+需求：
+僅需修改兩個class：
+- ToBritishVirginIslands,
+- Paragliding
+而且他們有對照組可供參考，分別是ToJapan, Karting
+更動其他部分可能會導致悲劇，請勿輕易嘗試。
+--
+說明：
+這次作業中我們要實作的是旅遊套裝行程的預算計算機，
+
+abstract class TravelBudget是所有類別的父類別，
+TravelBudget中含有三個method需要交給子類別去實作，
+這三個method代表著是三天個別的預算。
+-abstract double getBudgetOfDayOne();
+-abstract double getBudgetOfDayTwo();
+-abstract double getBudgetOfDayThree();
+但他幫你完成了一件事情：
+final double getBudget() {
+return getBudgetOfDayOne() + getBudgetOfDayTwo() + getBudgetOfDayThree();
+}
+註：final關鍵字用在method上代表子類別不能覆寫該method
+在這樣子的架構下，子類別只要完成那三個methods的實作，就能自動享有getBudget()的好處。
+
+以class ToJapan extends TravelBudget為例：
+我分別讓那三個method回傳200, 300, 400，沒有更動getBudget() method。
+當我寫出
+ToJapan tmp = new ToJapan();
+呼叫tmp.getBudget()時，我會得到900。
+這是從父類別繼承下來的好處
+class ToJapan 是給你們看的範例，
+而另外一個空的
+class ToBritishVirginIslands 則是要你們照著實作的，
+至於ToBritishVirginIslands的三天預算分別是多少，請參照測試程式碼自己算出來。
+--
+當然，旅程的規劃只要有足夠的$$$就可以加入額外的行程，
+interface Extra是我用來代表這件事情的外形，
+他有兩個method待他的子類別去實現：
+double getPrice();//代表該額外行程一次花費多少錢。
+double getAccumulatedPrice();//代表所有的額外行程共花了多少錢。
+--
+在這樣的架構下，我寫了一個抽象類別來代表DayOne會花的預算，外形如下：
+abstract class DayOneExtra extends TravelBudget implements Extra
+建構這個東西的時候需要一個TravelBudget當參數作為他的field
+然後我們完成了父類別的兩個method並以field TravelBudget來代替他的行為，例如：
+double getBudgetOfDayTwo() {
+return travelBudget.getBudgetOfDayTwo();
+}
+因為是抽象類別的關係，所有的未完成的夢想都會交由孩子完成：
+double getPrice()
+double getAccumulatedPrice()
+double getBudgetOfDayOne()
+
+這次的程式碼中我舉了Karting extends DayOneExtra這個額外行程當例子。
+他同樣也需要一個TravelBudget來建構物件。
+程式碼中：
+double getPrice() {return 20;}
+-getPrice會回傳每次Karting所要花費的錢。
+double getAccumulatedPrice()
+-會回傳所有的額外行程要花多少錢
+double getBudgetOfDayOne()
+-會回傳目前行程加上Karting要花多少錢
+可以仔細的看一下我寫的getBudgetOfDayOne()裡面有些巧思。
+我利用travelBudget.getBudgetOfDayOne()來代表目前行程預算，
+加上getPrice()就是加上現在的額外預算了。
+--
+在使用上，我們可以用：
+TravelBudget japan = new ToJapan();
+來代表去Japan的預算。
+
+TravelBudget japanWithKarting = new Karting(japan);
+來代表去Japan並玩了一次Karting的預算。
+
+TravelBudget japanWithKarting2 = new Karting(new Karting(japan));
+這個是去Japan第一天玩了兩次Karting。
+
+TravelBudget japanWithKarting6 = new Karting(new Karting(new Karting(new Karting(new Karting(new Karting(japan))))));
+這個是去Japan第一天玩了六次Karting。
+
+TravelBudget japanWithKandP = new Karting(new Paragliding(new Karting(japan))))));
+這個是去Japan第一天玩了兩次Karting中間穿插一次Paragliding。
+
+你們會發現之所以可以這樣一直包，
+是因為new Karting(...)後的形態，他也是個TravelBudget，
+所以可以滿足Karting(TravelBudget t)的需求。
+
+而我們要完成的目標是照著完成class Paragliding。
+
+另外你們可以參考一下Test.java
+我使用了各種不同的形態來表示該instance所能呼叫的method
+--
+這個作業中我們實作了兩個Pattern，但你們可以不用急著查。
+1. Template method - (TravelBudget)
+TravelBudget完成了getBudget()邏輯的主幹，剩下的細節交由子類別去操作。
+2. Decorator - (DayOneExtra)
+所有繼承DayOneExtra並注意實作細節的class就可以一直包一直包。
+--
+雖然例子很簡陋，但希望你們可以看見其中的彈性與結構，
+也了解到程式語言不只是邏輯的層疊，而是我們對這個世界的觀察。

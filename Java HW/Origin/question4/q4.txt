@@ -1,0 +1,32 @@
+[公告]
+作業三格式上傳範例如下：
+103356039
+-question4
+--Pythagorean.java
+--PythagoreanTest.java
+103356039, question4是資料夾
+(下略...)
+--
+class Pythagorean
+對Pythagorean的要求是完成其中的method：
+public void printPythagoreanTriple(int maxLength) {
+//以print(a,b,c)印出計算後的三個邊a,b,c
+//但print method本身有限制，只有當c>b>a的時候才能印出來
+//example
+for(int i = 0; i < maxLength + 8; i++){
+int a = i;
+int b = i - 1;
+int c = i - 2;
+print(c,b,a); 
+}
+}
+輸入：最長邊的值。
+可自行增加其他method輔助計算，
+[限制:]
+- 不要更改printPythagoreanTriple method的"外型"
+- 不要更改constructor Pythagorean
+- 不要更改private method print
+- 不要使用System.out.println(...)請改用我提供的print(a,b,c)
+星期四可能會先成績結算一次，
+提早交卷的同學可先知道自己的成績和修正答案的機會。
+有問題可通知我，注意上傳格式，祝作答愉快。

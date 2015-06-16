@@ -1,0 +1,17 @@
+作業四格式上傳範例如下：
+103356039
+-question5
+--GCD.java
+103356039, question5是資料夾
+(下略...)
+--
+這次目標是完成class GCD中的三個gcd method，
+public static int gcd(int a, int b) {//...}
+public static int gcd(int a, int b, int c) {//...}
+public static int gcd(int a, int b, int c, int d) {//...}
+不要改變method外型(不要動到public static int gcd(int a, int b))
+這周的題目比較好想一點，網路上也查得到。
+趁這個機會順便把前幾次沒搞定的弄一弄吧。
+星期四可能會先成績結算一次，
+提早交卷的同學可先知道自己的成績和修正答案的機會。
+有問題可通知我，注意上傳格式，祝作答愉快。
